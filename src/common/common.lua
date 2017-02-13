@@ -1,0 +1,13 @@
+
+require "common.Function"
+require "common.Toast"
+require "common.Toast2"
+require "common.Toast3"
+require "common.GameGlobal"
+require "common.BloodBar"
+require "common.GameString"
+require "common.TabBar"
+require "common.RotateView"
+require "common.UIButton"
+require "common.ListBar"
+require "common.CapTure"

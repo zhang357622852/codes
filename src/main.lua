@@ -35,8 +35,9 @@ local function main()
     --set FPS. the default value is 1.0/60 if you don't call this
     director:setAnimationInterval(1.0 / 60)
     
-    local designResolutionSizeX = 720
-    local designResolutionSizeY = 1280
+    --分辨率适配
+    local designResolutionSizeX = 1280
+    local designResolutionSizeY = 720
     local designResolutionSizeType = 3
     cc.Director:getInstance():getOpenGLView():setDesignResolutionSize(designResolutionSizeX, designResolutionSizeY, designResolutionSizeType)
     

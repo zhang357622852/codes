@@ -100,38 +100,14 @@ function MainUI:initView()
 --    callback(1)
     
     --关闭
-    local isClick = true
     local function callback_rotation(sender, eventType)
         if eventType == ccui.TouchEventType.began then
-            printLog("````````````began````````")
---            if isClick then
---                printLog("````````````true````````")
---            else
---                printLog("````````````false````````")
---            end
-            isClick = true
-            sender:runAction(cc.Sequence:create(cc.DelayTime:create(0.07),cc.CallFunc:create(function() isClick = false end)))
-            
         elseif eventType == ccui.TouchEventType.moved then
-            --printLog("```````````moved`````````")
         elseif eventType == ccui.TouchEventType.ended then
-            printLog("``````````ended``````````")
-            --self:closeMainUI()
-            if isClick then
-                printLog("````````````true````````")
-            else
-                printLog("````````````false````````")
-            end
-            if isClick then
-                local layer = test.create()
-                layer:addto(nil,10)
-            end
+            local layer = test.create()
+            layer:addto(nil,10)
         elseif eventType == ccui.TouchEventType.canceled then
-            printLog("````````````canceled````````")
         end
-    end
-    local function callback(sender,index)
-
     end
 
     local button = UIButton.create("myRes/an_15.png")
@@ -139,10 +115,8 @@ function MainUI:initView()
     self:addChild(button, 10)
     button:addTouchEventListener(callback_rotation)
     button:addSprite("string/str_gb.png")
-end
-
-function MainUI:reshLabel()
-	
+    
+    self:registerKeyBoardReleased()
 end
 
 function MainUI:closeMainUI()

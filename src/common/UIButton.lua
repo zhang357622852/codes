@@ -1,6 +1,13 @@
 --[[
     --按钮
     可添加精灵子节点，label,变灰
+    
+    --问题:
+    目前的这种方式，只支持放一张normal的图片(只要点击放大的效果),如果想要selected和disabled的图片(目前没有这种接口?)
+    self:getVirtualRenderer():getSprite() 得到的是normal下的Scale9Sprite
+    
+    --cocos2dx源码的实现:
+    有三种状态下的Scale9Sprite,状态改变时,用的也是cc.ScaleTo的缩放方式变大缩小
 --]]
 
 UIButton = class("UIButton", function() return ccui.Button:create() end)

@@ -32,24 +32,14 @@ function GameScene:initInformation()
     
     math.randomseed(os.time())
     
-    local function callback_rotation(sender, eventType)
-        if eventType == ccui.TouchEventType.ended then                 
-            local layer = MainUI.create()
-            layer:addto(GLOBAL_INSTANCE_SCENE)
-        end
-    end
-
-    local bt = UIButton.create("myRes/an_15.png")
-    bt:setPosition(self:getContentSize().width/2, 100)
-    self:addChild(bt)
-    bt:addTouchEventListener(callback_rotation) 
-    bt:addLabel("进入游戏")
-    
+    local layer = Login.create()
+    layer:addto(self)
 end
 
 --加载头文件
 function GameScene:initRequire()   
     require "common.common"
+    require "config.config"
     require "layer.layer"   
 end
 

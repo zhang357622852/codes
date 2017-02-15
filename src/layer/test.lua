@@ -22,11 +22,9 @@ function test:initView()
    self:addChild(sprite) 
    
    self:registerWithSafeArea(sprite)
-    printLog("```````registerWithSafeArea```````")
 end
 
 function test:closetest()
-    printLog("```````closetest```````")
     self:close()
 end
 
@@ -96,3 +94,5 @@ end
 --field:addEventListener(callback)
 --field:setPosition(layerbg:getContentSize().width/2, layerbg:getContentSize().height/2)
     --layerbg:addChild(field)
+
+    

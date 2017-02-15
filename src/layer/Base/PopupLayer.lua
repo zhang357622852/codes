@@ -41,8 +41,8 @@ function PopupLayer:registerWithSafeArea(node)
         end
         
         local function onTouchEnded(touch, event)
-            if self._type then
-                local str = "close"..self._type
+            local str = "close"..self._type
+            if self[str] then
                 self[str](self)
             else
                 self:close()

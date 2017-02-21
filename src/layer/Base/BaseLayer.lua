@@ -26,12 +26,10 @@ end
 function BaseLayer:addto(parent, zorder, tag)
     
     local zorder, tag = zorder or 0, tag or 0
-
+    
     if not parent then
         parent = cc.Director:getInstance():getRunningScene()
     end
-    self._parent = parent
-    
     parent:addChild(self, zorder, tag)
     
     if self._shield then--屏蔽下层消息
@@ -54,6 +52,7 @@ function BaseLayer:addto(parent, zorder, tag)
         end
     end
     
+    --printLog(string.format("--------------create %s'layer--------------",self._type))
     if self._keyboard_back then
         GAME_GLOBAL_BACK_LAYERS[#GAME_GLOBAL_BACK_LAYERS+1] = self
     end
@@ -87,7 +86,8 @@ function BaseLayer:registerKeyBoardReleased()
             local layer = GAME_GLOBAL_BACK_LAYERS[#GAME_GLOBAL_BACK_LAYERS]
             if not layer or layer == self then
                 --退出游戏
-                ToolTip.create(1)
+                local layer = ToolTip.create(1)
+                layer:setCallBack2(function() cc.Director:getInstance():endToLua() end)
             else
                 local str = "close"..layer._type
                 if layer[str] then
@@ -113,6 +113,7 @@ function BaseLayer:close()
             break
         end
     end
+    --printLog(string.format("--------------------close %s'layer--------------",self._type))
     self:removeFromParent()
     self = nil
 end

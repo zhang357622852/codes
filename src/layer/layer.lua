@@ -1,10 +1,11 @@
 
-require "layer.init.MainUI"
-require "layer.init.HomePage"
+require "layer.main.Main"
+require "layer.main.HomePage"
 
-require "layer.Base.BaseLayer"
-require "layer.Base.PopupLayer"
+require "layer.base.BaseLayer"
+require "layer.base.PopupLayer"
 
 require "layer.test"
 
 require "layer.login.Login"
+require "layer.login.Logo"

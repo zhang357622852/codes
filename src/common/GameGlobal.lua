@@ -1,7 +1,7 @@
 
 
-GAME_GLOBAL_SCREE_HEGHT                 = 720
-GAME_GLOBAL_SCREE_WIDTH                 = 1280
+GAME_GLOBAL_SCREE_HEGHT                 = cc.Director:getInstance():getVisibleSize().height
+GAME_GLOBAL_SCREE_WIDTH                 = cc.Director:getInstance():getVisibleSize().width
 
 GAME_GLOBAL_LAYERS                      = {} --所有在线图层
 GAME_GLOBAL_BACK_LAYERS                 = {} --安卓返回键,后建先退原则

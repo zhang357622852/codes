@@ -65,7 +65,7 @@ function ToolTip:initView(id)
 
     local function button2_select(sender, eventType)
         if eventType == ccui.TouchEventType.ended then
-            if self._callback1 then
+            if self._callback2 then
                 self._callback2()
             end
         end

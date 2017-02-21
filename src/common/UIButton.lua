@@ -48,13 +48,15 @@ function UIButton:addSprite(path, posx, posy)
     self._spChildren[#self._spChildren+1] = sp
 end
 
-function UIButton:addLabel(text, posx, posy)
+function UIButton:addLabel(text, posx, posy, fontsize)
     local x, y = posx or self:getContentSize().width/2, posy or self:getContentSize().height/2
+    local fontsize = fontsize or 24
     
-    local label = cc.Label:createWithSystemFont(text, "Arial", 24)
+    local label = cc.Label:createWithTTF(text or "exp", GAME_LABEL_FONT, fontsize)
     label:setPosition(x, y)
     self._sp:addChild(label)
-    self._spChildren[#self._spChildren+1] = label
+    
+    return label
 end
 
 function UIButton:setIsEnabled(isEnabled)

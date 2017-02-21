@@ -73,3 +73,77 @@ function TabBar.selectItem(tag, item)
         _callback(tag, item)
     end
 end
+
+--使用
+--    local function callback(tag, item)
+--        if tag ~= self._index then 
+--            if self._menuLayer[self._index] then
+--                self._menuLayer[self._index]:removeFromParent()
+--                self._menuLayer[self._index] = nil
+--            end
+--        end
+--        self._index = tag
+--        
+--        if tag == 1 then
+--            if not self._menuLayer[1] then
+--                local layer = HomePage.create()
+--                layer:addto(self)
+--                
+--                self._menuLayer[1] = layer
+--            end
+--        elseif tag == 2 then
+--            if not self._menuLayer[2] then
+--                local layer = cc.Layer:create()
+--                local bg = cc.Sprite:create("myRes/bg_2.png")
+--                bg:setPosition(layer:getContentSize().width/2, layer:getContentSize().height/2)
+--                layer:addChild(bg) 
+--                self:addChild(layer)
+--                self._menuLayer[2] = layer
+--            end
+--        elseif tag == 3 then
+--            if not self._menuLayer[3] then
+--                local layer = cc.Layer:create()
+--                local bg = cc.Sprite:create("myRes/bg_3.png")
+--                bg:setPosition(layer:getContentSize().width/2, layer:getContentSize().height/2)
+--                layer:addChild(bg) 
+--                self:addChild(layer)
+--                self._menuLayer[3] = layer
+--            end
+--        elseif tag == 4 then
+--            if not self._menuLayer[4] then
+--                local layer = cc.Layer:create()
+--                local bg = cc.Sprite:create("myRes/bg_4.png")
+--                bg:setPosition(layer:getContentSize().width/2, layer:getContentSize().height/2)
+--                layer:addChild(bg) 
+--                self:addChild(layer)
+--                self._menuLayer[4] = layer
+--            end
+--        elseif tag == 5 then
+--            if not self._menuLayer[5] then
+--                local layer = cc.Layer:create()
+--                local bg = cc.Sprite:create("myRes/bg_5.png")
+--                bg:setAnchorPoint(cc.p(0,0))
+--                --bg:setPosition(layer:getContentSize().width/2, layer:getContentSize().height/2)
+--                layer:addChild(bg) 
+--                self:addChild(layer)
+--                self._menuLayer[5] = layer
+--            end
+--        elseif tag == 6 then
+--            if not self._menuLayer[6] then
+--                local layer = cc.Layer:create()
+--                local bg = cc.Sprite:create("myRes/bg_6.png")
+--                bg:setPosition(layer:getContentSize().width/2, layer:getContentSize().height/2)
+--                layer:addChild(bg) 
+--                self:addChild(layer)
+--                self._menuLayer[6] = layer
+--            end
+--        end
+--    end
+--
+--    local path = {"layer/init/dfw_sz_1.png","layer/init/dfw_sz_2.png",
+--        "layer/init/dfw_sz_3.png","layer/init/dfw_sz_4.png","layer/init/dfw_sz_5.png","layer/init/dfw_sz_6.png"}
+--    local tab = TabBar.create(path, "layer/init/dfw_sz_7.png", 1)
+--    tab:registerCallBack(callback)
+--    self:addChild(tab, 10)
+--    
+--    callback(1)

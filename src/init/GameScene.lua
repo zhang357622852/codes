@@ -31,9 +31,6 @@ function GameScene:initInformation()
     self:initAudio()
     
     math.randomseed(os.time())
-    
-    local layer = Login.create()
-    layer:addto(self)
 end
 
 --加载头文件

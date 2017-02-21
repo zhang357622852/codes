@@ -45,10 +45,14 @@ local function main()
     local gameScene = GameScene.create()
     
     if cc.Director:getInstance():getRunningScene() then
+        --引擎会初始化一个场景,cc.Director:getInstance():getRunningScene()一开始得到的是初始的场景,后面再调用时，才是自定义的场景
         cc.Director:getInstance():replaceScene(gameScene)
     else
         cc.Director:getInstance():runWithScene(gameScene)
     end
+    
+    local layer = Logo.create(1)
+    layer:addto(gameScene)  
 
 end
 

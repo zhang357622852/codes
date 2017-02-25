@@ -2,7 +2,7 @@
     提示框
 --]]
 
-ToolTip = class("ToolTip", function() return BaseLayer:create() end)
+ToolTip = class("ToolTip", function() return PopupLayer:create() end)
 
 function ToolTip.create(id)
     local layer = ToolTip.new(id)

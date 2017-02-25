@@ -23,8 +23,7 @@ function BaseLayer:ctor()
     GAME_GLOBAL_LAYERS[self] = true
 end
 
-function BaseLayer:addto(parent, zorder, tag)
-    
+function BaseLayer:addto(parent, zorder, tag)    
     local zorder, tag = zorder or 0, tag or 0
     
     if not parent then
@@ -74,6 +73,49 @@ end
 --设置遮罩蒙版的图片
 function BaseLayer:setMaskStr(path)
     self._maskStr = path
+end
+
+--点击非图片区域会关闭此图层   
+--注意：
+-- 1.安全区域层的模板node的锚点是cc.p(0.5, 0.5),如果不是此锚点，需重新计算--这里为了不写太多的if-elseif的句子，如果有需求多的话再增加
+function BaseLayer:registerWithSafeArea(node)
+    if self._closeArea then
+        printLog("you have recently registered a SafeArea")
+    else
+        self._closeArea = true
+        local layer = cc.Layer:create()
+        layer:setContentSize(node:getBoundingBox().width, node:getBoundingBox().height) --要考虑到这个节点可能被缩放了
+        layer:setAnchorPoint(cc.p(0, 0))       
+        layer:setPosition(node:getPositionX()-node:getBoundingBox().width/2, node:getPositionY()-node:getBoundingBox().height/2)
+        self:addChild(layer,-9999)
+
+        local function onTouchBegan(touch, event)
+            local pos = touch:getLocation()
+            local box = layer:getBoundingBox()
+
+            if cc.rectContainsPoint(box, pos) then
+                return false
+            else
+                return true
+            end
+        end
+
+        local function onTouchEnded(touch, event)
+            local str = "close"..self._type
+            if self[str] then
+                self[str](self)
+            else
+                error(string.format("----------------the Layer have not close%s function----------",self._type),2)
+            end
+        end
+
+        local listener = cc.EventListenerTouchOneByOne:create()
+        listener:registerScriptHandler(onTouchBegan, cc.Handler.EVENT_TOUCH_BEGAN)
+        listener:registerScriptHandler(onTouchEnded, cc.Handler.EVENT_TOUCH_ENDED)
+
+        local disp = layer:getEventDispatcher()
+        disp:addEventListenerWithSceneGraphPriority(listener, layer)
+    end     
 end
 
 --以注册此函数的图层为基底图层

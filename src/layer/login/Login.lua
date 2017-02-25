@@ -22,6 +22,7 @@ function Login:ctor()
 end
 
 function Login:initView()
+    Audio.playMusic("login_music")
     
     local visiblesize = cc.Director:getInstance():getVisibleSize()
     local winsize = cc.Director:getInstance():getWinSize()
@@ -53,8 +54,9 @@ function Login:initView()
     
     local function callback_rotation(sender, eventType)
         if eventType == ccui.TouchEventType.ended then                 
---            local layer = Main.create()
---            layer:addto(nil)
+            local layer = Main.create()
+            layer:addto(nil)
+            self:closeLogin()
         end
     end
 

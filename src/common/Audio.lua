@@ -1,6 +1,7 @@
 --[[
-            音频管理
-            --这里使用新的音频库AudioEngine取代SimpleAudioEngine 因为旧的音频播放音效时，无法再播完后支持回调函数，造成音效重叠播放
+    音频管理
+    --这里使用的还是SimpleAudioEngine
+    --没有使用新的音频引擎AudioEngine，好像在android上是有问题的,只能等使用高版本的，再研究下
 --]]
 
 module("Audio",package.seeall)
@@ -14,25 +15,58 @@ local musicFiles =
 {
         login_music="audio/login_bg.mp3"
 }
+--预加载音乐
+for k,v in pairs(musicFiles) do
+    audio:preloadMusic(v)
+    printLog("this is preloadMusic: "..v)
+end
 
+function playMusic(name,isLoop)  
+    if isMusic then
+        local isLoop = isLoop or false
+        local filename = musicFiles[name] or musicFiles["login_music"]
+        audio:playMusic(filename,isLoop)
+    end
+end
 
-function playMusic(name)
---    if isMusic then
---        audio:playBackgroundMusic(musicFiles[name],true) --playMusic(musicFiles[name],true) 
---    else
---        audio:stopBackgroundMusic()
---    end
-    ccexp.AudioEngine:play2d(musicFiles[name],true)
+function pauseMusic()
+    audio:pauseMusic()
+end
+
+function resumeMusic()
+    audio:resumeMusic()
+end
+
+function stopMusic(isReleaseData)
+    local isReleaseData = isReleaseData or false
+    audio:stopMusic(isReleaseData)
 end
 
 ---音效
-local rffectFiles =
+local effectFiles =
     {
-        "audio/click_1.wav"
+        button_1 = "audio/click_1.wav"
     }
-
+    
 --预加载音效
-for k,v in pairs(rffectFiles) do
+for k,v in pairs(effectFiles) do
     audio:preloadEffect(v)
+    printLog("this is preloadEffect: "..v)
 end
+
+function playEffect(name, isLoop)
+    if isEffect then
+        local isLoop = isLoop or false
+        local filename = effectFiles[name] or effectFiles["button_1"]
+        audio:playEffect(filename,isLoop)
+    end
+end
+
+function stopAllEffects()
+    audio:stopAllEffects()
+end
+
+
+
+
 

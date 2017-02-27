@@ -26,7 +26,6 @@ function GameScene:ctor()
 end
 
 function GameScene:initInformation()
-    
     self:initRequire()  
     math.randomseed(os.time())
 end

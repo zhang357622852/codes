@@ -22,33 +22,33 @@ function Login:ctor()
 end
 
 function Login:initView()
-    Audio.playMusic("login_music")
+    Audio.playMusic("login_music",true)
     
     local visiblesize = cc.Director:getInstance():getVisibleSize()
     local winsize = cc.Director:getInstance():getWinSize()
     
     local label = cc.Label:createWithTTF("visiblesize.width: "..visiblesize.width,GAME_LABEL_FONT,32)
-    label:setPosition(visiblesize.width/2,self:getContentSize().height/2)
+    label:setPosition(visiblesize.width/2,self:getContentSize().height/2+200)
     self:addChild(label)
     
     local label = cc.Label:createWithTTF("visiblesize.height: "..visiblesize.height,GAME_LABEL_FONT,32)
-    label:setPosition(visiblesize.width/2,self:getContentSize().height/2-50)
+    label:setPosition(visiblesize.width/2,self:getContentSize().height/2+150)
     self:addChild(label)
     
     local label = cc.Label:createWithTTF("self:getContentSize().width: "..self:getContentSize().width,GAME_LABEL_FONT,32)
-    label:setPosition(self:getContentSize().width/2,self:getContentSize().height/2-100)
+    label:setPosition(self:getContentSize().width/2,self:getContentSize().height/2+100)
     self:addChild(label)
     
     local label = cc.Label:createWithTTF("self:getContentSize().height: "..self:getContentSize().height,GAME_LABEL_FONT,32)
-    label:setPosition(self:getContentSize().width/2,self:getContentSize().height/2-150)
+    label:setPosition(self:getContentSize().width/2,self:getContentSize().height/2+50)
     self:addChild(label)
     
     local label = cc.Label:createWithTTF("winsize.width: "..winsize.width,GAME_LABEL_FONT,32)
-    label:setPosition(winsize.width/2,self:getContentSize().height/2-200)
+    label:setPosition(winsize.width/2,self:getContentSize().height/2)
     self:addChild(label)
     
     local label = cc.Label:createWithTTF("winsize.height: "..winsize.height,GAME_LABEL_FONT,32)
-    label:setPosition(winsize.width/2,self:getContentSize().height/2-250)
+    label:setPosition(winsize.width/2,self:getContentSize().height/2-50)
     self:addChild(label)
     
     
@@ -61,7 +61,7 @@ function Login:initView()
     end
 
     local bt = UIButton.create("button/an_2.png")
-    bt:setPosition(self:getContentSize().width/2, 50)
+    bt:setPosition(self:getContentSize().width/2, 100)
     self:addChild(bt)
     bt:addTouchEventListener(callback_rotation) 
     bt:addLabel(GameString.WM_OTHER_INTER)

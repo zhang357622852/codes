@@ -4,7 +4,7 @@
 
 Logo = class("Logo", function() return BaseLayer:create() end)
 
---type: 1:logo是一张图片  2:logo是一个视频(点击屏幕，直接跳过)
+--type: 1:logo是一张图片  2:logo是一个视频(点击屏幕，直接跳过,目前还没做)
 function Logo.create(type)
     local layer = Logo.new()
     layer:initView(type)
@@ -20,14 +20,18 @@ function Logo:initView(type)
     if type == 1 then
         local sprite = cc.Sprite:create("ui/login/logo.png")
         sprite:setPosition(self:getContentSize().width/2,self:getContentSize().height/2)
+        sprite:setOpacity(0)
         self:addChild(sprite)
         local function callback()
             self:gotoLogin()
         end
-
-        local action1 = cc.FadeOut:create(1)
-        local action2 = cc.CallFunc:create(callback)
-        local action = cc.Sequence:create(action1,action2)
+        
+        local action1 = cc.FadeIn:create(1)
+        local action2 = cc.DelayTime:create(1)
+        local action3 = cc.FadeOut:create(1)
+        local action4 = cc.CallFunc:create(callback)
+        
+        local action = cc.Sequence:create(action1,action2,action3,action4)
         sprite:runAction(action)
     else
         local targetPlatform = cc.Application:getInstance():getTargetPlatform()

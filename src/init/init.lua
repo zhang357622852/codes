@@ -1,3 +1,3 @@
 
-require "init.GameScene"
 require "init.Setting"
+require "init.GameScene"

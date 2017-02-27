@@ -1,5 +1,6 @@
 
 require "common.Function"
+require "common.Audio"
 require "common.Toast"
 require "common.Toast2"
 require "common.Toast3"
@@ -12,4 +13,3 @@ require "common.UIButton"
 require "common.ListBar"
 require "common.CapTure"
 require "common.ToolTip"
-require "common.Audio"
